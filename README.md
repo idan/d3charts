@@ -16,3 +16,6 @@ All good, komrade! We are being supply code under license “BSD” of three cla
 
 Hell yes, please.
 
+### Styling charts?
+
+These plugins create charts with the bare minimum of styling applied. Charts are just SVG, you can (and should!) style them with CSS like any other markup. The `examples` directory provides some, er, examples.
