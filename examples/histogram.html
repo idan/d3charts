@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histogram</title>
+    <script type="text/javascript" src="https://github.com/mbostock/d3/raw/v1.17.0/d3.js"></script> 
+    <script type="text/javascript" src="https://github.com/mbostock/d3/raw/v1.17.0/d3.layout.js"></script> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="../jquery.d3charts.js"></script>
+    <script src="../jquery.d3charts.histogram.js"></script>
+
+    <style>
+        body {
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        .chart {
+            height: 100px;
+            margin-bottom: 50px;
+        }
+
+        rect {
+            fill: #444;
+            stroke: #fff;
+            shape-rendering: crispEdges;
+            -webkit-transition: fill 0.3s;
+            -moz-transition: fill 0.3s;
+            -o-transition: fill 0.3s;
+            -ms-transition: fill 0.3s;
+            transition: fill 0.3s;
+        }
+        rect:hover {
+            fill: #777;
+        }
+        line {
+            stroke: #ccc;
+            shape-rendering: crispEdges;
+        }
+        text {
+            fill: #666;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="chart"></div>
+<div class="chart"></div>
+
+<script>
+
+    var generateData = function() {
+        // Generate an Irwin-Hall distribution.
+        var n = 10000, // number of trials
+        m = 10,    // number of random variables
+        data = [];
+
+        for (var i = 0; i < n; i++) {
+          for (var s = 0, j = 0; j < m; j++) {
+            s += Math.random();
+          }
+          data.push(s);
+        }
+        return data;
+    }
+
+    settings = {
+        'data': generateData,
+        'height': 100,
+        // 10-20 bins, at random
+        'bins': function() { return Math.floor(Math.random() * (20 - 10 + 1) + 10);},
+        'bottompad': 15,
+        'labelsize': 10,
+        // label each bin with the percent of the total population in that bin
+        'labelGenerator': function(d, i) { 
+            var val = d3.round(d.y * 100.0);
+            if (val == 0) {
+                return '-';
+            } else {
+                return val + "%";
+            }
+        }
+    };
+
+    $(function() {
+        // see, chaining still works.
+        $(".chart").d3histogram(settings).toggleClass("foo");
+    });
+</script>
+</body>
+</html>
