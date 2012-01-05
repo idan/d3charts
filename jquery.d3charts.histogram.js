@@ -46,7 +46,6 @@
             }
             d3.select(this.element[0]).each(function(d, i) {
                 var data = widget._optValue(widget.options.data);
-//                var data = $.isFunction(widget.options.data) ? widget.options.data() : widget.options.data;
                 var bins = widget._optValue(widget.options.bins);
                 var histogram = d3.layout.histogram().bins(bins)
                     (data);
