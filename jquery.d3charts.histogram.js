@@ -41,9 +41,6 @@
             var w = this.options.width === null ? this.element.width() : this.options.width;
             var h = this.options.height === null ? this.element.height() : this.options.height;
             var ls = this.options.labelsize === null ? this.options.bottompad - 2 : this.options.labelsize;
-            if ($.isFunction(this.options.data)) {
-                
-            }
             d3.select(this.element[0]).each(function(d, i) {
                 var data = widget._optValue(widget.options.data);
                 var bins = widget._optValue(widget.options.bins);
