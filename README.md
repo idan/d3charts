@@ -19,3 +19,11 @@ Hell yes, please.
 ### Styling charts?
 
 These plugins create charts with the bare minimum of styling applied. Charts are just SVG, you can (and should!) style them with CSS like any other markup. The `examples` directory provides some, er, examples.
+
+### Preview?
+
+Sure.
+
+* [Histogram](http://bl.ocks.org/1564489)
+* more coming soon…
+
